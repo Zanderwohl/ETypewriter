@@ -1,19 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <curses.h>
 
-void clear()
-{
-  system("clear");
-}
-
-void put_char(char c, int x, int y)
-{
-  printf("Not yet implemented. Char: %c at (%i, %i).\n", c, x, y);
-}
+WINDOW *mainwindow;
 
 int main()
 {
-  clear();
-  put_char('I', 0, 5);
-  put_char('P', 25, 40);
+  mainwindow = initscr(); // Start curses.
+  printf("Hello, world!\n");
+  endwin(); // Stop curses, to restore shell to normal behavior.
 }
