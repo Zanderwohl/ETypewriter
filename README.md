@@ -10,3 +10,4 @@ Run
 make && ./terminal.o
 ```
 
+Exit by pressing the escape key.
