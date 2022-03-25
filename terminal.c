@@ -1,9 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <ctype.h>
 #include <curses.h>
 
+#define ESC 27
+
 WINDOW *mainwindow;
+int keypress;
 
 int main()
 {
@@ -13,6 +17,7 @@ int main()
     printf("Error initilizing curses.");
     exit(1);
   }
+  noecho();
 
   // Do stuff
   box(mainwindow, ACS_VLINE, ACS_HLINE);
@@ -20,8 +25,13 @@ int main()
   // Display
   refresh();
 
-  // Show for a second
-  sleep(3);
+  // Main loop
+  while ((keypress = getch()) != ESC)
+  {
+    //deleteln();
+    mvprintw(1, 1, "%x", keypress);
+    refresh();
+  }
 
   // Clean Up
   delwin(mainwindow);
