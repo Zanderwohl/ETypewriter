@@ -23,6 +23,7 @@ int main()
     exit(1);
   }
   noecho(); // Turn off character echo
+  keypad(mainwindow, 1);
   wmove(mainwindow, 1, 1);
   getmaxyx(mainwindow, max_y, max_x);
 
@@ -32,13 +33,10 @@ int main()
   // Display
   refresh();
 
-  int key_press_count = 0;
   // Main loop
   while ((keypress = getch()) != ESC)
   {
-    mvprintw(1, max_x - 3, "%i", ++key_press_count);
-    //deleteln();
-    mvprintw(1, 1, "%x", keypress);
+    mvprintw(1, 1, "%i", keypress);
     refresh();
   }
 
